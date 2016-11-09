@@ -6,6 +6,13 @@
   tags:
     - powerdns
 
+- name: PowerDNS authoritative backends to launch
+  set_fact:
+    powerdns_authoritative_launch: "{{ powerdns_authoritative_launch + ['bind'] }}"
+  tags:
+    - powerdns
+    - authoritative
+
 - name: Create PowerDNS authoritative server default file
   become: yes
   template:
