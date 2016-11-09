@@ -6,16 +6,6 @@
   tags:
     - powerdns
 
-- include: CentOS.yml
-  when: ansible_distribution == "CentOS"
-  tags:
-    - powerdns
-
-- include: Ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
-  tags:
-    - powerdns
-
 - name: Create PowerDNS authoritative server default file
   become: yes
   template:
@@ -30,6 +20,12 @@
   tags:
     - powerdns
     - authoritative
+
+- name: Create PowerDNS config dirs
+  file: path="{{ item }}" state=directory mode=0755
+  with_items:
+    - /etc/powerdns
+    - /etc/powerdns/pdns.d
 
 - name: Create PowerDNS authoritative BIND backend configuration file
   become: yes
@@ -165,6 +161,16 @@
   tags:
     - powerdns
     - recursor
+
+- include: CentOS.yml
+  when: ansible_distribution == "CentOS"
+  tags:
+    - powerdns
+
+- include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+  tags:
+    - powerdns
 
 - name: Ensure PowerDNS authoritative service is started and enabled on boot
   become: yes
