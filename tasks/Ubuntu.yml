@@ -34,7 +34,6 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
   with_items:
     - "{{ powerdns_authoritative_packages }}"
   when: powerdns_authoritative
@@ -47,7 +46,6 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
   with_items:
     - "{{ powerdns_recursor_packages }}"
   when: powerdns_recursor
