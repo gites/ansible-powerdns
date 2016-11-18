@@ -29,13 +29,23 @@
     - powerdns
     - recursor
 
+- name: Designate pdns-backend-pipe package to be installed
+  set_fact:
+    powerdns_authoritative_packages: "{{ powerdns_authoritative_packages + ['pdns-backend-pipe={{ powerdns_authoritative_version }}*'] }}"
+  with_items:
+    - "{{ powerdns_authoritative_launch }}"
+  when: "powerdns_authoritative and 'pipe' in item"
+  tags:
+    - powerdns
+    - authoritative
+
 - name: Install PowerDNS authoritative
   become: yes
   apt:
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ powerdns_authoritative_packages }}"
+    - "{{ powerdns_authoritative_packages|unique }}"
   when: powerdns_authoritative
   tags:
     - powerdns
