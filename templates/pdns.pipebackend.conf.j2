@@ -1,0 +1,29 @@
+# {{ ansible_managed }}
+
+{% if powerdns_pipe_command %}
+# https://doc.powerdns.com/md/authoritative/backend-pipe/#pipe-command
+{% for key,value in powerdns_pipe_command.iteritems() %}
+pipe-{{ key }}{% if key != "" %}-{% else %}{% endif %}command={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if powerdns_pipe_abi_version %}
+# https://doc.powerdns.com/md/authoritative/backend-pipe/#pipe-abi-version
+{% for key,value in powerdns_pipe_abi_version.iteritems() %}
+pipe-{{ key }}{% if key != "" %}-{% else %}{% endif %}abi-version={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if powerdns_pipe_timeout %}
+# https://doc.powerdns.com/md/authoritative/backend-pipe/#pipe-timeout
+{% for key,value in powerdns_pipe_timeout.iteritems() %}
+pipe-{{ key }}{% if key != "" %}-{% else %}{% endif %}timeout={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if powerdns_pipe_regex %}
+# https://doc.powerdns.com/md/authoritative/backend-pipe/#pipe-regex
+{% for key,value in powerdns_pipe_regex.iteritems() %}
+pipe-{{ key }}{% if key != "" %}-{% else %}{% endif %}regex={{ value }}
+{% endfor %}
+{% endif %}

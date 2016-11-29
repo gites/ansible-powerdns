@@ -94,6 +94,17 @@
     - powerdns
     - authoritative
 
+- name: Create PowerDNS pipe backend configuration file
+  template: src=templates/pdns.pipebackend.conf.j2 dest=/etc/powerdns/pdns.d/pdns.pipebackend.conf
+  when: powerdns_authoritative and 'pipe' in item
+  with_items:
+    - "{{ powerdns_authoritative_launch|join(':') }}"
+  notify:
+    - restart powerdns authoritative
+  tags:
+    - powerdns
+    - authoritative
+
 - name: Create PowerDNS Mysql backend configuration file
   become: yes
   template:
