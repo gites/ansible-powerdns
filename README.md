@@ -208,6 +208,10 @@ Role Variables
 | powerdns_backend_generic_postgresql_user                 | powerdns                                                                                                                                                                                                                                                  |             |
 | powerdns_backend_generic_postgresql_password             | powerdns                                                                                                                                                                                                                                                  |             |
 | powerdns_backend_generic_postgresql_dnssec               | false                                                                                                                                                                                                                                                     |             |
+| powerdns_pipe_command                                    | {}                                                                    |             |
+| powerdns_pipe_abi_version                                | {}                                                                    |             |
+| powerdns_pipe_timeout                                    | {}                                                                    |             |
+| powerdns_pipe_regex                                      | {}                                                                    |             |
 
 Dependencies
 ------------
