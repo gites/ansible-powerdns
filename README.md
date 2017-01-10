@@ -1,7 +1,7 @@
 powerdns
 ========
 
-[![Build Status](https://travis-ci.org/kbrebanov/ansible-powerdns.svg?branch=master)](https://travis-ci.org/kbrebanov/ansible-powerdns)
+[![Build Status](https://api.travis-ci.org/gites/ansible-powerdns.svg?branch=master)](https://travis-ci.org/gites/ansible-powerdns)
 
 Installs PowerDNS
 
